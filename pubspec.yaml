@@ -58,7 +58,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/fundo.gif
+    - lib/assets/images/fundo.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -75,6 +75,10 @@ flutter:
     - family: Silkscreen
       fonts:
         - asset: fonts/Silkscreen-Regular.ttf
+          style: normal
+    - family: 1up
+      fonts:
+        - asset: fonts/1up.ttf
           style: normal
           
   # For details regarding fonts from package dependencies,
