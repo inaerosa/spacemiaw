@@ -28,17 +28,21 @@ class _HistoriaState extends State<Historia> {
           image: const DecorationImage(
               image: AssetImage('lib/assets/images/fundo.gif'),
               fit: BoxFit.fill)),
-      child: Container(
-        color: Colors.white,
-        child: const Text(
-          'AJUDE O GATONAUTA A CAPTURAR O MÁXIMO DE ESTRELAS, FUJA DOS ASTEROIDES...E SE VOCÊ TIVER SORTE, PODE ENCONTRAR UM E.T',
-          style: TextStyle(
-            color: Colors.black,
-            decoration: TextDecoration.none,
-            fontSize: 14,
-            fontFamily: 'Silkscreen',
-          ),
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Container(
+              color: Colors.white,
+              child: const Text(
+                'AJUDE O GATONAUTA A CAPTURAR O MÁXIMO DE ESTRELAS, FUJA DOS ASTEROIDES...E SE VOCÊ TIVER SORTE, PODE ENCONTRAR UM E.T',
+                style: TextStyle(
+                  color: Colors.black,
+                  decoration: TextDecoration.none,
+                  fontSize: 14,
+                  fontFamily: 'Silkscreen',
+                ),
+              ))
+        ],
       ),
     );
   }
