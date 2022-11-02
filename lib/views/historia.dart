@@ -32,9 +32,9 @@ class _HistoriaState extends State<Historia> {
         Align(
           alignment: Alignment.centerLeft,
           child: Container(
-            margin: const EdgeInsets.only(top: 350),
-            width: 100.0,
-            height: 100.0,
+            margin: const EdgeInsets.only(top: 420),
+            width: MediaQuery.of(context).size.width * 0.2,
+            height: MediaQuery.of(context).size.height * 0.2,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.fitWidth,
@@ -47,8 +47,8 @@ class _HistoriaState extends State<Historia> {
           alignment: Alignment.bottomCenter,
           child: Container(
               color: Colors.white,
-              width: 400.0,
-              height: 80.0,
+              width: MediaQuery.of(context).size.width * 0.95,
+              height: MediaQuery.of(context).size.height * 0.13,
               child: Container(
                 padding: EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
