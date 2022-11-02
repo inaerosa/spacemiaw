@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'my_homepage.dart';
+import 'jogo.dart';
 
 class Historia extends StatefulWidget {
   static const nomeRota = "/Historia";
@@ -15,8 +15,8 @@ class _HistoriaState extends State<Historia> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 10), () {
-      Navigator.pushNamed(context, MyHomePage.nomeRota);
+    Timer(const Duration(seconds: 8), () {
+      Navigator.pushNamed(context, Jogo.nomeRota);
     });
   }
 
@@ -48,7 +48,7 @@ class _HistoriaState extends State<Historia> {
           child: Container(
               color: Colors.white,
               width: MediaQuery.of(context).size.width * 0.95,
-              height: MediaQuery.of(context).size.height * 0.13,
+              height: MediaQuery.of(context).size.height * 0.18,
               child: Container(
                 padding: EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class _HistoriaState extends State<Historia> {
                         width: 5,
                         style: BorderStyle.solid)),
                 child: const Text(
-                  'AJUDE O GATONAUTA A CAPTURAR O MÁXIMO DE ESTRELAS, FUJA DOS ASTEROIDES...E SE VOCÊ TIVER SORTE, PODE ENCONTRAR UM E.T',
+                  'Olá, viajante! A partir de agora você está responsável por ajudar o gatonaura em sua missão de capturar o máximo de estrelas e fugir dos asteróides, mas esteja sempre atento a possíveis visitas de outros seres 👾',
                   textDirection: TextDirection.ltr,
                   style: TextStyle(
                     color: Colors.black,
