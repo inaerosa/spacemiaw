@@ -4,6 +4,7 @@ import 'splash_screen.dart';
 import 'my_homepage.dart';
 import 'sobre.dart';
 import 'historia.dart';
+import 'jogo.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
           SplashScreen.nomeRota: (context) => SplashScreen(),
           MyHomePage.nomeRota: (context) => MyHomePage(),
           Sobre.nomeRota: (context) => Sobre(),
-          Historia.nomeRota: (context) => Historia()
+          Historia.nomeRota: (context) => Historia(),
+          Jogo.nomeRota: (context) => Jogo(),
         });
   }
 }
