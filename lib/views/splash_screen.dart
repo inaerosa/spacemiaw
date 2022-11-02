@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushNamed(context, MyHomePage.nomeRota);
     });
   }
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         alignment: AlignmentDirectional.center,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('lib/assets/images/fundo.gif'),
             fit: BoxFit.fill,
@@ -36,9 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
             CircularImage(
               imageProvider: AssetImage('lib/assets/images/cat.png'),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 25, bottom: 25),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.only(top: 25, bottom: 25),
+              child: Text(
                 'SPACE MIAW',
                 style: TextStyle(
                   fontFamily: '1up',
@@ -47,8 +47,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
             ),
-            Padding(
-                padding: const EdgeInsets.only(left: 100, right: 100),
+            const Padding(
+                padding: EdgeInsets.only(left: 100, right: 100),
                 child: CircularProgressIndicator(
                     backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     valueColor: AlwaysStoppedAnimation(
