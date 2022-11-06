@@ -42,66 +42,72 @@ class _FormularioState extends State<Formulario> {
             image: DecorationImage(
                 image: AssetImage('lib/assets/images/fundo.gif'),
                 fit: BoxFit.fill)),
-        child: Column(
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              const Text(
-                ' \n\n FIM\n  DE\nJOGO',
-                style: TextStyle(
-                  fontSize: 50,
-                  fontFamily: 'Silkscreen',
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          const Text(
+            'FIM\nDE\nJOGO',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 50,
+              fontFamily: 'Silkscreen',
+              color: Colors.white,
+              shadows: [
+                Shadow(
+                  blurRadius: 10.0,
+                  color: Color.fromARGB(255, 255, 7, 181),
+                  offset: Offset(5.0, 5.0),
+                )
+              ],
+            ),
+          ),
+          const Text('PONTUAÇAO',
+              style: TextStyle(
+                fontSize: 18,
+                fontFamily: 'Silkscreen',
+                color: Colors.white,
+              )),
+          const Text('30',
+              style: TextStyle(
+                fontSize: 30,
+                fontFamily: 'Silkscreen',
+                color: Colors.white,
+              )),
+          const Text('INSIRA O NOME',
+              style: TextStyle(
+                fontSize: 15,
+                fontFamily: 'Silkscreen',
+                color: Colors.white,
+              )),
+          SizedBox(
+            width: 200,
+            child: TextFormField(
+              style: const TextStyle(
+                  color: Colors.white, fontSize: 12, fontFamily: 'Silkscreen'),
+              cursorColor: Color.fromARGB(255, 255, 7, 181),
+              controller: controllerNome,
+              decoration: const InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: Color.fromARGB(255, 255, 7, 181),
+                  width: 2,
+                )),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
                   color: Colors.white,
-                  shadows: [
-                    Shadow(
-                      blurRadius: 10.0,
-                      color: Color.fromARGB(255, 255, 7, 181),
-                      offset: Offset(5.0, 5.0),
-                    )
-                  ],
-                ),
+                  width: 2,
+                )),
+                filled: true,
               ),
-              const Text('\nPONTUAÇAO',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'Silkscreen',
-                    color: Colors.white,
-                  )),
-              const Text('\n\nINSIRA O NOME',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'Silkscreen',
-                    color: Colors.white,
-                  )),
-              TextFormField(
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontFamily: 'Silkscreen'),
-                cursorColor: Color.fromARGB(255, 255, 7, 181),
-                controller: controllerNome,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Color.fromARGB(255, 255, 7, 181),
-                    width: 2,
-                  )),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Colors.white,
-                    width: 2,
-                  )),
-                  filled: true,
-                ),
-                maxLength: 5,
-                validator: Validador.validarNome(),
-              ),
-              ElevatedButton(
-                  onPressed: onPressed,
-                  style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 255, 7, 181)),
-                  child: const Icon(Icons.keyboard_arrow_left_rounded))
-            ]),
+              maxLength: 3,
+              validator: Validador.validarNome(),
+            ),
+          ),
+          ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(
+                  primary: Color.fromARGB(255, 255, 7, 181)),
+              child: const Icon(Icons.keyboard_arrow_left_rounded))
+        ]),
       ),
     );
   }
