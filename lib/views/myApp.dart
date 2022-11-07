@@ -5,6 +5,8 @@ import 'my_homepage.dart';
 import 'sobre.dart';
 import 'historia.dart';
 import 'jogo.dart';
+import 'form.dart';
+import 'ranking.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class MyApp extends StatelessWidget {
           Sobre.nomeRota: (context) => Sobre(),
           Historia.nomeRota: (context) => Historia(),
           Jogo.nomeRota: (context) => Jogo(),
+          Formulario.nomeRota: (context) => Formulario(),
+          Ranking.nomeRota: (context) => Ranking(),
         });
   }
 }
