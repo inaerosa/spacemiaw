@@ -11,9 +11,19 @@ class MongoDatabase {
     var status = db.serverStatus();
     print(status);
     var collection = db.collection(COLLECTION_NAME);
+    return collection;
+  }
+
+  static Future insert(dynamic name, dynamic points) async {
+    var collection = await connect();
     await collection.insertMany([
-      {"name": "IBR", "points": 13}
+      {"name": name, "points": points}
     ]);
-    print(await collection.find().toList());
+  }
+
+  static Future list() async {
+    var collection = await connect();
+    var results = await collection.find().toList();
+    return results;
   }
 }
