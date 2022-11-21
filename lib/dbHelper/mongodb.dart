@@ -9,7 +9,6 @@ class MongoDatabase {
     await db.open();
     inspect(db);
     var status = db.serverStatus();
-    print(status);
     var collection = db.collection(COLLECTION_NAME);
     return collection;
   }
@@ -21,9 +20,10 @@ class MongoDatabase {
     ]);
   }
 
-  static Future list() async {
+  static Future<List<Map<String, dynamic>>> list() async {
     var collection = await connect();
     var results = await collection.find().toList();
+
     return results;
   }
 }
