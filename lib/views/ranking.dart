@@ -5,7 +5,7 @@ import '../dbHelper/mongodb.dart';
 import 'my_homepage.dart';
 
 class Ranking extends StatefulWidget {
-  static const nomeRota = "/Historia";
+  static const nomeRota = "/Ranking";
 
   _RankingState createState() => _RankingState();
 }
