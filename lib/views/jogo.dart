@@ -20,8 +20,6 @@ class _JogoState extends State<Jogo> {
     setState(() {
       catY -= 0.05;
     });
-
-    print(catY);
   }
 
   void down() {
@@ -48,16 +46,6 @@ class _JogoState extends State<Jogo> {
               margin: EdgeInsets.all(10),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Image.asset('lib/assets/images/vida.png',
-                          width: 30, height: 30),
-                      Image.asset('lib/assets/images/vida.png',
-                          width: 30, height: 30),
-                      Image.asset('lib/assets/images/vida.png',
-                          width: 30, height: 30)
-                    ],
-                  ),
                   Expanded(
                     flex: 8,
                     child: Container(
@@ -66,6 +54,10 @@ class _JogoState extends State<Jogo> {
                           alignment: Alignment(0, catY), children: [MyCat()]),
                     ),
                   ),
+                  AnimatedContainer(
+                      alignment: Alignment(1, 1),
+                      duration: const Duration(milliseconds: 2),
+                      color: Colors.white),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
