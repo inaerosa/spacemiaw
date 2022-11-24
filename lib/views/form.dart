@@ -38,6 +38,8 @@ class _FormularioState extends State<Formulario> {
 
   @override
   Widget build(BuildContext context) {
+    final Set dados = ModalRoute.of(context)!.settings.arguments as Set;
+
     return Scaffold(
       body: Container(
         alignment: AlignmentDirectional.center,
@@ -72,8 +74,8 @@ class _FormularioState extends State<Formulario> {
                       fontFamily: 'Silkscreen',
                       color: Colors.white,
                     )),
-                const Text('30',
-                    style: TextStyle(
+                Text("${dados.first}",
+                    style: const TextStyle(
                       fontSize: 30,
                       fontFamily: 'Silkscreen',
                       color: Colors.white,
