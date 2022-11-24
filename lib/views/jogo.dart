@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:test/views/form.dart';
 
 import 'myCat.dart';
 
@@ -16,6 +17,13 @@ class Jogo extends StatefulWidget {
 
 class _JogoState extends State<Jogo> {
   double catY = 0;
+  static double meteorXone = 1.1;
+  static double meteorXtwo = meteorXone + 1.5;
+  double meteorXthree = meteorXtwo + 1.5;
+  static double starXone = 1.1;
+  static double starXtwo = starXone + 1.5;
+  double starXthree = starXtwo + 1.5;
+
   void up() {
     setState(() {
       catY -= 0.05;
@@ -28,53 +36,174 @@ class _JogoState extends State<Jogo> {
     });
   }
 
+  void runGame() {
+    Timer.periodic(Duration(milliseconds: 200), (timer) {
+      setState(() {
+        if (meteorXone < -2) {
+          meteorXone += 3.5;
+        } else {
+          meteorXone -= 0.5;
+        }
+
+        if (meteorXtwo < -2) {
+          meteorXtwo += 3.5;
+        } else {
+          meteorXtwo -= 0.05;
+        }
+
+        if (meteorXthree < -2) {
+          meteorXthree += 3.5;
+        } else {
+          meteorXthree -= 0.05;
+        }
+      });
+      // double heightToCoordinate(double height) {
+      //   double totalHeight = MediaQuery.of(context).size.height * 3 / 4;
+      //   double catY = 1 - 2 * height / totalHeight;
+      //   return catY;
+      // }
+
+      setState(() {
+        if (starXone < -2) {
+          starXone += 3.5;
+        } else {
+          starXone -= 0.5;
+        }
+
+        if (starXtwo < -2) {
+          starXtwo += 3.5;
+        } else {
+          starXtwo -= 0.05;
+        }
+
+        if (starXthree < -2) {
+          starXthree += 3.5;
+        } else {
+          starXthree -= 0.05;
+        }
+
+        // if ((meteorXtwo.toStringAsFixed(2) == (0.65).toString() ||
+        //         meteorXtwo.toStringAsFixed(2) == (0.60).toString()) &&
+        //     (catY == -0.7000000000000001 || catY == 0.65)) {
+        //   print('MARCADO');
+        //   // timer.cancel();
+        //   // Navigator.pushNamed(context, Formulario.nomeRota);
+        // }
+        print(catY);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    runGame();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme:
-            ThemeData(colorSchemeSeed: const Color.fromARGB(255, 255, 7, 181)),
-        home: Scaffold(
-          body: Container(
-            padding: const EdgeInsets.only(bottom: 100),
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('lib/assets/images/fundo.gif'),
-                fit: BoxFit.fill,
-              ),
-            ),
-            child: Container(
-              margin: EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 8,
-                    child: Container(
-                      padding: const EdgeInsets.only(right: 250),
-                      child: Stack(
-                          alignment: Alignment(0, catY), children: [MyCat()]),
-                    ),
-                  ),
-                  AnimatedContainer(
-                      alignment: Alignment(1, 1),
-                      duration: const Duration(milliseconds: 2),
-                      color: Colors.white),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: up,
-                        child: const Icon(Icons.arrow_drop_up_outlined),
-                      ),
-                      ElevatedButton(
-                        onPressed: down,
-                        child: const Icon(Icons.arrow_drop_down),
-                      )
-                    ],
-                  ),
-                ],
-              ),
+      theme: ThemeData(colorSchemeSeed: const Color.fromARGB(255, 255, 7, 181)),
+      home: Scaffold(
+        body: Container(
+          padding: const EdgeInsets.only(bottom: 100),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('lib/assets/images/fundo.gif'),
+              fit: BoxFit.fill,
             ),
           ),
-        ));
+          child: Container(
+            margin: EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    padding: const EdgeInsets.only(right: 100),
+                    child: Stack(
+                      alignment: Alignment(0, catY),
+                      children: [
+                        MyCat(),
+                        AnimatedContainer(
+                          alignment: Alignment(meteorXtwo, -0.7),
+                          duration: const Duration(milliseconds: 0),
+                          child: Container(
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    'lib/assets/images/meteor.png',
+                                  ),
+                                ),
+                              ),
+                              width: 80,
+                              height: 80),
+                        ),
+                        AnimatedContainer(
+                          alignment: Alignment(meteorXthree, 0.5),
+                          duration: const Duration(milliseconds: 0),
+                          child: Container(
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    'lib/assets/images/meteor.png',
+                                  ),
+                                ),
+                              ),
+                              width: 80,
+                              height: 80),
+                        ),
+                        AnimatedContainer(
+                          alignment: Alignment(starXtwo, -0.3),
+                          duration: const Duration(milliseconds: 0),
+                          child: Container(
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    'lib/assets/images/star.png',
+                                  ),
+                                ),
+                              ),
+                              width: 40,
+                              height: 40),
+                        ),
+                        AnimatedContainer(
+                          alignment: Alignment(starXthree, 0.7),
+                          duration: const Duration(milliseconds: 0),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  'lib/assets/images/star.png',
+                                ),
+                              ),
+                            ),
+                            width: 40,
+                            height: 40,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: up,
+                      child: const Icon(Icons.arrow_drop_up_outlined),
+                    ),
+                    ElevatedButton(
+                      onPressed: down,
+                      child: const Icon(Icons.arrow_drop_down),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
