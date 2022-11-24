@@ -22,7 +22,9 @@ class MongoDatabase {
 
   static Future<List<Map<String, dynamic>>> list() async {
     var collection = await connect();
-    var results = await collection.find().toList();
+    var results = await collection
+        .find(where.limit(5).sortBy('points', descending: true))
+        .toList();
 
     return results;
   }
