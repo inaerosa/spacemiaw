@@ -23,7 +23,7 @@ class _JogoState extends State<Jogo> {
   static double starXone = 1.1;
   static double starXtwo = starXone + 1.5;
   double starXthree = starXtwo + 1.5;
-
+  int points = 0;
   void up() {
     setState(() {
       catY -= 0.05;
@@ -37,7 +37,7 @@ class _JogoState extends State<Jogo> {
   }
 
   void runGame() {
-    Timer.periodic(Duration(milliseconds: 200), (timer) {
+    Timer.periodic(Duration(milliseconds: 600), (timer) {
       setState(() {
         if (meteorXone < -2) {
           meteorXone += 3.5;
@@ -89,10 +89,29 @@ class _JogoState extends State<Jogo> {
         //   // timer.cancel();
         //   // Navigator.pushNamed(context, Formulario.nomeRota);
         // }
-        print(catY);
       });
+      var catDies = catY == -0.6 || catY == -0.7 || catY == -0.65;
+      var meteorDies = meteorXtwo.toStringAsFixed(2) == (0.65).toString() ||
+          meteorXtwo.toStringAsFixed(2) == (0.60).toString() ||
+          meteorXtwo.toStringAsFixed(2) == (0.55).toString();
+      var starPoint = starXtwo.toStringAsFixed(2) == (0.50).toString() ||
+          starXtwo.toStringAsFixed(2) == (0.45).toString() ||
+          starXtwo.toStringAsFixed(2) == (0.40).toString();
+
+      var catPoints = catY == 0.6 || catY == 0.7 || catY == 0.65;
+      if (starPoint && catPoints) {
+        points += 5;
+      }
+
+      if (catDies && meteorDies) {
+        timer.cancel();
+        Navigator.pushReplacementNamed(context, Formulario.nomeRota,
+            arguments: {points});
+      }
     });
   }
+
+  test() {}
 
   @override
   void initState() {
@@ -140,21 +159,7 @@ class _JogoState extends State<Jogo> {
                               height: 80),
                         ),
                         AnimatedContainer(
-                          alignment: Alignment(meteorXthree, 0.5),
-                          duration: const Duration(milliseconds: 0),
-                          child: Container(
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                    'lib/assets/images/meteor.png',
-                                  ),
-                                ),
-                              ),
-                              width: 80,
-                              height: 80),
-                        ),
-                        AnimatedContainer(
-                          alignment: Alignment(starXtwo, -0.3),
+                          alignment: Alignment(starXtwo, 0.6),
                           duration: const Duration(milliseconds: 0),
                           child: Container(
                               decoration: const BoxDecoration(
@@ -166,21 +171,6 @@ class _JogoState extends State<Jogo> {
                               ),
                               width: 40,
                               height: 40),
-                        ),
-                        AnimatedContainer(
-                          alignment: Alignment(starXthree, 0.7),
-                          duration: const Duration(milliseconds: 0),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  'lib/assets/images/star.png',
-                                ),
-                              ),
-                            ),
-                            width: 40,
-                            height: 40,
-                          ),
                         ),
                       ],
                     ),
