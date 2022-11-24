@@ -4,6 +4,7 @@ import 'package:test/util/validador.dart';
 import 'package:test/model/jogador.dart';
 
 import '../dbHelper/mongodb.dart';
+import 'ranking.dart';
 
 class Formulario extends StatefulWidget {
   static const nomeRota = "/formulario";
@@ -113,14 +114,13 @@ class _FormularioState extends State<Formulario> {
                   ),
                 ),
                 ElevatedButton(
-                    onPressed: inserir,
-                    style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 255, 7, 181)),
+                    onPressed: () async {
+                      await inserir(dados.first);
+                    },
                     child: const Text('salvar')),
                 ElevatedButton(
                     onPressed: onPressed,
-                    style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 255, 7, 181)),
+                    style: ElevatedButton.styleFrom(),
                     child: const Icon(Icons.keyboard_arrow_left_rounded))
               ]),
         ),
@@ -128,8 +128,9 @@ class _FormularioState extends State<Formulario> {
     );
   }
 
-  inserir() async {
+  Future inserir(int points) async {
     _formKey.currentState!.save();
-    await MongoDatabase.insert(controllerNome.text, "30");
+    await MongoDatabase.insert(controllerNome.text, points);
+    Navigator.pushNamed(context, Ranking.nomeRota);
   }
 }
