@@ -57,11 +57,6 @@ class _JogoState extends State<Jogo> {
           meteorXthree -= 0.05;
         }
       });
-      // double heightToCoordinate(double height) {
-      //   double totalHeight = MediaQuery.of(context).size.height * 3 / 4;
-      //   double catY = 1 - 2 * height / totalHeight;
-      //   return catY;
-      // }
 
       setState(() {
         if (starXone < -2) {
@@ -106,12 +101,10 @@ class _JogoState extends State<Jogo> {
       if (catDies && meteorDies) {
         timer.cancel();
         Navigator.pushReplacementNamed(context, Formulario.nomeRota,
-            arguments: {points});
+            arguments: {points.toString()});
       }
     });
   }
-
-  test() {}
 
   @override
   void initState() {
