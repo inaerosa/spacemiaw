@@ -37,7 +37,7 @@ class _JogoState extends State<Jogo> {
   }
 
   void runGame() {
-    Timer.periodic(Duration(milliseconds: 600), (timer) {
+    Timer.periodic(Duration(milliseconds: 300), (timer) {
       setState(() {
         if (meteorXone < -2) {
           meteorXone += 3.5;
@@ -101,7 +101,7 @@ class _JogoState extends State<Jogo> {
       if (catDies && meteorDies) {
         timer.cancel();
         Navigator.pushReplacementNamed(context, Formulario.nomeRota,
-            arguments: {points.toString()});
+            arguments: {points});
       }
     });
   }
