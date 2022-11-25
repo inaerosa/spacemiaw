@@ -11,6 +11,20 @@ class Ranking extends StatefulWidget {
 }
 
 class _RankingState extends State<Ranking> {
+  int position = 0;
+
+  void ranking() {
+    setState(() {
+      position++;
+    });
+  }
+
+  @override
+  void initState() {
+    ranking();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +56,16 @@ class _RankingState extends State<Ranking> {
             ),
             SizedBox(
               height: 200.0,
+              width: 200.0,
               child: FutureBuilder(
                 future: MongoDatabase.list(),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text('loading');
+                    return const Text('loading...',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Silkscreen',
+                        ));
                   } else {
                     if (snapshot.hasData) {
                       return ListView.builder(
@@ -54,7 +73,7 @@ class _RankingState extends State<Ranking> {
                           itemBuilder: (context, index) {
                             return displayRanking(
                                 MongoModel.fromJson(snapshot.data[index]),
-                                snapshot.data.length);
+                                index + 1);
                           });
                     } else {
                       return Text('There isnt data available');
@@ -83,22 +102,20 @@ class _RankingState extends State<Ranking> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text("$index",
+            Text("# $index",
                 style: const TextStyle(
-                  fontFamily: 'Silkscreen',
-                  color: Colors.white,
-                )),
+                    fontFamily: 'Silkscreen',
+                    color: Colors.white,
+                    fontSize: 18)),
             Text("${data.name}",
                 style: const TextStyle(
-                  fontFamily: 'Silkscreen',
-                  color: Colors.white,
-                )),
+                    fontFamily: 'Silkscreen',
+                    color: Colors.white,
+                    fontSize: 18)),
             Text(
               "${data.points}",
               style: const TextStyle(
-                fontFamily: 'Silkscreen',
-                color: Colors.white,
-              ),
+                  fontFamily: 'Silkscreen', color: Colors.white, fontSize: 18),
             ),
           ],
         ),
